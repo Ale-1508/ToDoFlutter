@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo/application/core/style/colors.dart';
+import 'package:todo/logic/toDoLogic.dart';
 
 class AddToDo extends StatefulWidget {
   const AddToDo({super.key});
@@ -9,7 +10,38 @@ class AddToDo extends StatefulWidget {
 }
 
 class _AddToDoState extends State<AddToDo> {
+  final FocusNode focusNode = FocusNode();
   final todoTextfieldController = TextEditingController();
+  
+  DateTime? expiry;
+  bool important = false;
+
+  void toggleKeyboard() {
+    if (focusNode.hasFocus) {
+      focusNode.unfocus();
+    } else {
+      FocusScope.of(context).requestFocus(focusNode);
+    }
+  }
+
+  void handleSave(){
+    ToDo toDo = ToDo(
+      description: todoTextfieldController.text,
+      expiry: expiry,
+      important: important,
+    );
+    // add toDo to list
+    print(toDo);
+    resetState();
+    toggleKeyboard();
+  }
+
+  void resetState(){
+    setState(() {
+      important=false;
+      expiry=null;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,22 +63,16 @@ class _AddToDoState extends State<AddToDo> {
                 children: [
                   IconButtonSmall(
                     icon: Icons.alarm,
-                    onPressed: () {
-                      print("hello");
-                    },  
+                    onPressed: () {expiry=DateTime.now();},  
                   ),
                   IconButtonSmall(
                     icon: Icons.priority_high,
-                    onPressed: () {
-                      print("hello");
-                    },  
+                    onPressed: () {important=true;},  
                   ),
                 ],
               ),
               TextButton(
-                onPressed: () {
-                  print(todoTextfieldController.text);
-                },
+                onPressed: handleSave,
                 style: TextButton.styleFrom(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                   minimumSize: const Size(64, 32),
