@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class colors {
   static Color background = const Color(0xfffafafa);
   static Color textfieldBackground = const Color.fromARGB(255, 226, 226, 226);
-  static Color text = const Color.fromARGB(255, 12, 12, 12);
+  static const Color text = Color.fromARGB(255, 12, 12, 12);
 }
 
 class NeutralColors {
@@ -19,4 +19,8 @@ class NeutralColors {
   static Color shade800 = const Color(0xff343a40);
   static Color shade900 = const Color(0xff212529);
 
+}
+
+class SupportingColors {
+  static const Color error =  Color(0xffe10000);
 }

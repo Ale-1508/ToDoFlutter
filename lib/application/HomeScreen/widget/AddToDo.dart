@@ -31,7 +31,9 @@ class _AddToDoState extends State<AddToDo> {
       important: important,
     );
     // add toDo to list
-    print(toDo);
+    print(toDo.description);
+    print(toDo.important);
+    print(toDo.expiry);
     resetState();
     toggleKeyboard();
   }
@@ -67,7 +69,10 @@ class _AddToDoState extends State<AddToDo> {
                   ),
                   IconButtonSmall(
                     icon: Icons.priority_high,
-                    onPressed: () {important=true;},  
+                    color: important? SupportingColors.error : colors.text,
+                    onPressed: () {setState(() {
+                      important=!important;
+                    });},  
                   ),
                 ],
               ),
@@ -93,11 +98,13 @@ class _AddToDoState extends State<AddToDo> {
 class IconButtonSmall extends StatelessWidget {
   final IconData icon;
   final VoidCallback onPressed;
+  final Color color;
 
   const IconButtonSmall({
     super.key,
     required this.icon,
-    required this.onPressed
+    required this.onPressed,
+    this.color = colors.text,
   });
 
   @override
@@ -105,7 +112,7 @@ class IconButtonSmall extends StatelessWidget {
     return IconButton(
       icon: Icon(icon),
       iconSize: 24,
-      color: colors.text,
+      color: color,
       onPressed: onPressed
     );
   }
