@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo/application/core/style/colors.dart';
+import 'package:todo/logic/AddToDoLogic.dart';
 import 'package:todo/logic/toDoLogic.dart';
 
 class AddToDo extends StatefulWidget {
@@ -24,16 +25,19 @@ class _AddToDoState extends State<AddToDo> {
     }
   }
 
-  void handleSave(){
+  void handleSave() async {
     ToDo toDo = ToDo(
       description: todoTextfieldController.text,
       expiry: expiry,
       important: important,
     );
     // add toDo to list
-    print(toDo.description);
-    print(toDo.important);
-    print(toDo.expiry);
+    Map<String,dynamic> result = await addToDo(toDo);
+
+    // print addToDo result
+    print(result["success"]);
+    print(result["lastKey"]);
+    
     resetState();
     toggleKeyboard();
   }
