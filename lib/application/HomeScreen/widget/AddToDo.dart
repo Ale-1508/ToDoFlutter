@@ -58,8 +58,8 @@ class _AddToDoState extends State<AddToDo> {
     return Container(
       height: 136,
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(18)),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
         color: colors.background,
       ),
       child: Column(

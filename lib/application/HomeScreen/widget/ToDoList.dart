@@ -34,7 +34,7 @@ class _ToDoListState extends State<ToDoList>{
         itemBuilder: (context, index) {
           return ToDo(
             description: toDoList[index]["description"],
-            important: toDoList[index]["important"],
+            important: toDoList[index]["isImportant"] ?? false,
             expiry: toDoList[index]["expiry"],
           );
         },
