@@ -32,10 +32,20 @@ class _ToDoListState extends State<ToDoList>{
       child: ListView.builder(
         itemCount: toDoList.length,
         itemBuilder: (context, index) {
-          return ToDo(
-            description: toDoList[index]["description"],
-            important: toDoList[index]["isImportant"] ?? false,
-            expiry: toDoList[index]["expiry"],
+          final toDo = toDoList[index];
+
+          return Dismissible(
+            key: Key(toDo["description"]),
+            onDismissed: (direction) {
+              setState(() {
+                toDoList.removeAt(index);
+              });
+            },
+            child: ToDo(
+              description: toDoList[index]["description"],
+              important: toDoList[index]["isImportant"] ?? false,
+              expiry: toDoList[index]["expiry"],
+            ),
           );
         },
       )
