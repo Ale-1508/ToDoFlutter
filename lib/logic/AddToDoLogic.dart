@@ -2,7 +2,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todo/logic/toDoLogic.dart';
 
 Future<Map<String,dynamic>> addToDo(ToDo toDo) async {
-  var box = await Hive.openBox('myBox');
+  var box = await Hive.openBox('toDo');
   
   int lastKey = await box.add({
     "description": toDo.description,
@@ -16,6 +16,6 @@ Future<Map<String,dynamic>> addToDo(ToDo toDo) async {
 }
 
 Future<int> getLastKey() async {
-  var box = await Hive.openBox('myBox');
+  var box = await Hive.openBox('toDo');
   return box.keys.last;
 }

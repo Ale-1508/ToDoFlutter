@@ -4,11 +4,11 @@ import 'package:todo/application/HomeScreen/HomeScreen.dart';
 
 void main() async {
   await Hive.initFlutter();
-  runApp(const MyApp());
+  runApp(const ToDoApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class ToDoApp extends StatelessWidget {
+  const ToDoApp({super.key});
 
   // This widget is the root of your application.
   @override

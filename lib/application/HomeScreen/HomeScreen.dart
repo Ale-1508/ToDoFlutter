@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo/application/HomeScreen/widget/AddToDo.dart';
+import 'package:todo/application/HomeScreen/widget/ToDoList.dart';
 import 'package:todo/application/core/style/colors.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,8 +15,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: const Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [AddToDo()],
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          ToDoList(),
+          AddToDo()
+        ],
       ),
       backgroundColor: NeutralColors.shade200,
     );
