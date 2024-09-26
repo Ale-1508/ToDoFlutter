@@ -49,6 +49,7 @@ class _AddToDoState extends State<AddToDo> {
     setState(() {
       important=false;
       expiry=null;
+      todoTextfieldController.text="";
     });
   }
 
