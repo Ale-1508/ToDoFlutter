@@ -32,10 +32,8 @@ class _ToDoListState extends State<ToDoList>{
       child: ListView.builder(
         itemCount: toDoList.length,
         itemBuilder: (context, index) {
-          final toDo = toDoList[index];
-
           return Dismissible(
-            key: Key(toDo["description"]),
+            key: UniqueKey(),
             onDismissed: (direction) {
               setState(() {
                 toDoList.removeAt(index);
