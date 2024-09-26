@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:todo/application/core/style/colors.dart';
-import 'package:todo/application/core/widget/alertDialogs.dart';
 import 'package:todo/logic/AddToDoLogic.dart';
 import 'package:todo/logic/toDoLogic.dart';
 
