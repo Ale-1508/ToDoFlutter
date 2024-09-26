@@ -14,3 +14,8 @@ Future<Map<String,dynamic>> addToDo(ToDo toDo) async {
     "lastKey":lastKey
   };
 }
+
+Future<int> getLastKey() async {
+  var box = await Hive.openBox('myBox');
+  return box.keys.last;
+}

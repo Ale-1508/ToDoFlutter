@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo/application/core/style/colors.dart';
+import 'package:todo/application/core/widget/alertDialogs.dart';
 import 'package:todo/logic/AddToDoLogic.dart';
 import 'package:todo/logic/toDoLogic.dart';
 
@@ -17,6 +18,7 @@ class _AddToDoState extends State<AddToDo> {
   DateTime? expiry;
   bool important = false;
 
+
   void toggleKeyboard() {
     if (focusNode.hasFocus) {
       focusNode.unfocus();
@@ -26,6 +28,8 @@ class _AddToDoState extends State<AddToDo> {
   }
 
   void handleSave() async {
+    if (todoTextfieldController.text=="") return;
+    
     ToDo toDo = ToDo(
       description: todoTextfieldController.text,
       expiry: expiry,
