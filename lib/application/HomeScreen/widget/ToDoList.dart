@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:todo/logic/toDoLogic.dart';
+import 'ToDo.dart';
 
 class ToDoList extends StatefulWidget {
   const ToDoList({super.key});
@@ -18,7 +18,6 @@ class _ToDoListState extends State<ToDoList>{
     setState(() {
       toDoList = box.values.toList();
     });
-    print(toDoList);
   }
 
   @override
@@ -33,8 +32,10 @@ class _ToDoListState extends State<ToDoList>{
       child: ListView.builder(
         itemCount: toDoList.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(toDoList[index]["description"].toString()),
+          return ToDo(
+            description: toDoList[index]["description"],
+            important: toDoList[index]["important"],
+            expiry: toDoList[index]["expiry"],
           );
         },
       )

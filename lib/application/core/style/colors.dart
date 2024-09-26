@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
 class colors {
-  static Color background = const Color(0xfffafafa);
+  static const Color background = Color(0xfffafafa);
   static Color textfieldBackground = const Color.fromARGB(255, 226, 226, 226);
   static const Color text = Color.fromARGB(255, 12, 12, 12);
 }
