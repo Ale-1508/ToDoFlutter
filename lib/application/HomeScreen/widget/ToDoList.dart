@@ -11,20 +11,11 @@ class ToDoList extends StatefulWidget {
 }
 
 class _ToDoListState extends State<ToDoList>{
-  List<dynamic> toDoList = [];
-  
-  void updateToDoList() async {
-    final provider = Provider.of<ToDoProvider>(context, listen: false);
-    await provider.fetchToDos();
-    setState(() {
-      toDoList = provider.toDoList;
-    });
-  }
-
   @override
   void initState() {
     super.initState();
-    updateToDoList();
+    final provider = Provider.of<ToDoProvider>(context, listen: false);
+    provider.fetchToDos();
   }
 
   @override
