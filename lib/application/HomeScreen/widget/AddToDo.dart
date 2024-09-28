@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todo/application/core/style/colors.dart';
+import 'package:todo/data/toDoProvider.dart';
 import 'package:todo/logic/AddToDoLogic.dart';
 import 'package:todo/logic/toDoLogic.dart';
 
@@ -27,6 +29,7 @@ class _AddToDoState extends State<AddToDo> {
   }
 
   void handleSave() async {
+    final provider = Provider.of<ToDoProvider>(context, listen: false);
     if (todoTextfieldController.text=="") return;
     
     ToDo toDo = ToDo(
@@ -35,7 +38,7 @@ class _AddToDoState extends State<AddToDo> {
       important: important,
     );
     // add toDo to list
-    Map<String,dynamic> result = await addToDo(toDo);
+    Map<String,dynamic> result = await provider.addToDo(toDo);
 
     // print addToDo result
     print(result["success"]);

@@ -1,48 +1,48 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
+import 'package:provider/provider.dart';
+import 'package:todo/data/toDoProvider.dart';
 import 'ToDo.dart';
 
 class ToDoList extends StatefulWidget {
   const ToDoList({super.key});
-
+  
   @override
   State<ToDoList> createState() => _ToDoListState();
 }
 
 class _ToDoListState extends State<ToDoList>{
   List<dynamic> toDoList = [];
-
-  Future<void> fetchToDos() async {
-    var box = await Hive.openBox('toDo');
-    // await box.clear();
+  
+  void updateToDoList() async {
+    final provider = Provider.of<ToDoProvider>(context, listen: false);
+    await provider.fetchToDos();
     setState(() {
-      toDoList = box.values.toList();
+      toDoList = provider.toDoList;
     });
   }
 
   @override
   void initState() {
     super.initState();
-    fetchToDos();
+    updateToDoList();
   }
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<ToDoProvider>(context);
     return Expanded(
       child: ListView.builder(
-        itemCount: toDoList.length,
+        itemCount: provider.toDoList.length,
         itemBuilder: (context, index) {
           return Dismissible(
             key: UniqueKey(),
-            onDismissed: (direction) {
-              setState(() {
-                toDoList.removeAt(index);
-              });
+            onDismissed: (direction) async {
+              await provider.removeToDo(index);
             },
             child: ToDo(
-              description: toDoList[index]["description"],
-              important: toDoList[index]["isImportant"] ?? false,
-              expiry: toDoList[index]["expiry"],
+              description: provider.toDoList[index]["description"],
+              important: provider.toDoList[index]["isImportant"] ?? false,
+              expiry: provider.toDoList[index]["expiry"],
             ),
           );
         },
