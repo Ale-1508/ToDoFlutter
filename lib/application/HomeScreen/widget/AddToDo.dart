@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/application/core/style/colors.dart';
 import 'package:todo/data/toDoProvider.dart';
-import 'package:todo/logic/AddToDoLogic.dart';
 import 'package:todo/logic/toDoLogic.dart';
 
 class AddToDo extends StatefulWidget {
