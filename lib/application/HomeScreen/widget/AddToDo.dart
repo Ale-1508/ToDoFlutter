@@ -87,7 +87,7 @@ class _AddToDoState extends State<AddToDo> {
                   padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                   minimumSize: const Size(64, 32),
                   textStyle: const TextStyle(fontSize: 12),
-                  backgroundColor: const Color.fromARGB(255, 134, 201, 255),
+                  backgroundColor: colors.primary,
                   foregroundColor: colors.text, 
                 ),
                 child: const Text('SAVE'),
