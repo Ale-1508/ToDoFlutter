@@ -36,13 +36,8 @@ class _AddToDoState extends State<AddToDo> {
       expiry: expiry,
       important: important,
     );
-    // add toDo to list
-    Map<String,dynamic> result = await provider.addToDo(toDo);
+    await provider.addToDo(toDo);
 
-    // print addToDo result
-    print(result["success"]);
-    print(result["lastKey"]);
-    
     resetState();
     toggleKeyboard();
   }
