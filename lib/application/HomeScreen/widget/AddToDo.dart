@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/application/core/style/colors.dart';
+import 'package:todo/application/core/style/style.dart';
 import 'package:todo/data/toDoProvider.dart';
 import 'package:todo/logic/toDoLogic.dart';
 
@@ -55,6 +56,7 @@ class _AddToDoState extends State<AddToDo> {
       initialDate: DateTime.now(),
       firstDate: DateTime(2000),
       lastDate: DateTime(2101),
+      builder: (BuildContext context, Widget? child) {return DateTimePickerTheme.setTheme(context, child);},
     );
 
     if (pickedDate != null && mounted){
@@ -62,6 +64,7 @@ class _AddToDoState extends State<AddToDo> {
         // ignore: use_build_context_synchronously
         context: context,
         initialTime: TimeOfDay.now(),
+        builder: (BuildContext context, Widget? child) {return DateTimePickerTheme.setTheme(context, child);},
       );
 
       if (pickedTime != null && mounted){
