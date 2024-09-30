@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/application/HomeScreen/HomeScreen.dart';
+import 'package:todo/application/core/style/style.dart';
 import 'package:todo/data/toDoProvider.dart';
 
 void main() async {
@@ -22,10 +23,7 @@ class ToDoApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'To-Do',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: DefaultTheme.get(),
       home: const HomeScreen(),
     );
   }
