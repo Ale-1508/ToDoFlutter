@@ -4,13 +4,13 @@ import 'package:todo/application/core/widget/CircleCheckbox.dart';
 
 class ToDo extends StatelessWidget {
   final String description;
-  final DateTime? expiry;
   final bool important;
+  final String expiry;
   
   const ToDo({
     super.key,
     required this.description,
-    this.expiry,
+    this.expiry = "",
     this.important = false ,
   });
 

@@ -70,7 +70,9 @@ class _AddToDoState extends State<AddToDo> {
                 children: [
                   IconButtonSmall(
                     icon: Icons.alarm,
-                    onPressed: () {expiry=DateTime.now();},  
+                    onPressed: () {
+                      expiry=DateTime.now();
+                    },  
                   ),
                   IconButtonSmall(
                     icon: Icons.priority_high,
@@ -82,7 +84,6 @@ class _AddToDoState extends State<AddToDo> {
                 ],
               ),
               TextButton(
-                onPressed: handleSave,
                 style: TextButton.styleFrom(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                   minimumSize: const Size(64, 32),
@@ -90,6 +91,7 @@ class _AddToDoState extends State<AddToDo> {
                   backgroundColor: colors.primary,
                   foregroundColor: colors.text, 
                 ),
+                onPressed: handleSave,
                 child: const Text('SAVE'),
               ),
             ],
