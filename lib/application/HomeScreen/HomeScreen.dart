@@ -14,6 +14,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("To-Do List"),
+        backgroundColor: colors.textfieldBackground,  
+      ),
       body: const Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
