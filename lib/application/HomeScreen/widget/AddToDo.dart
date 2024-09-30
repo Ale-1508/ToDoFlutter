@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/application/core/style/colors.dart';
 import 'package:todo/application/core/style/style.dart';
@@ -68,13 +69,15 @@ class _AddToDoState extends State<AddToDo> {
       );
 
       if (pickedTime != null && mounted){
-        expiry = DateTime(
-          pickedDate.year,
-          pickedDate.month,
-          pickedDate.day,
-          pickedTime.hour,
-          pickedTime.minute,
-        );
+        setState(() {
+          expiry = DateTime(
+            pickedDate.year,
+            pickedDate.month,
+            pickedDate.day,
+            pickedTime.hour,
+            pickedTime.minute,
+          );
+        });
       }
     }
   }
@@ -99,11 +102,13 @@ class _AddToDoState extends State<AddToDo> {
                 children: [
                   IconButtonSmall(
                     icon: Icons.alarm,
+                    color: expiry!=null? colors.primary : colors.text,
                     onPressed: () {
                       expiry=DateTime.now();
                       _selectDateTime(context);
                     },  
                   ),
+                  expiry!=null? Text(DateFormat(DatetimeFormat.standard).format(expiry!)) : const SizedBox.shrink(),
                   IconButtonSmall(
                     icon: Icons.priority_high,
                     color: important? SupportingColors.error : colors.text,
