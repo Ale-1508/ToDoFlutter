@@ -18,7 +18,6 @@ class _AddToDoState extends State<AddToDo> {
   DateTime? expiry;
   bool important = false;
 
-
   void toggleKeyboard() {
     if (focusNode.hasFocus) {
       focusNode.unfocus();
@@ -50,6 +49,33 @@ class _AddToDoState extends State<AddToDo> {
     });
   }
 
+  Future<void> _selectDateTime(BuildContext context) async {
+    final DateTime? pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+    );
+
+    if (pickedDate != null && mounted){
+      final TimeOfDay? pickedTime = await showTimePicker(
+        // ignore: use_build_context_synchronously
+        context: context,
+        initialTime: TimeOfDay.now(),
+      );
+
+      if (pickedTime != null && mounted){
+        expiry = DateTime(
+          pickedDate.year,
+          pickedDate.month,
+          pickedDate.day,
+          pickedTime.hour,
+          pickedTime.minute,
+        );
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -72,6 +98,7 @@ class _AddToDoState extends State<AddToDo> {
                     icon: Icons.alarm,
                     onPressed: () {
                       expiry=DateTime.now();
+                      _selectDateTime(context);
                     },  
                   ),
                   IconButtonSmall(
