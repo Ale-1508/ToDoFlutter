@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("To-Do List"),
-        backgroundColor: colors.textfieldBackground,  
+        backgroundColor: Colors.transparent,  
       ),
       body: const Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
