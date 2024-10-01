@@ -46,9 +46,11 @@ class _ToDoListState extends State<ToDoList>{
               );
             },
             child: ToDo(
+              index: index,
               description: provider.toDoList[index]["description"],
               important: provider.toDoList[index]["isImportant"] ?? false,
               expiry: provider.toDoList[index]["expiry"],
+              isDone: provider.toDoList[index]["isDone"] ?? false,
             ),
           );
         },
