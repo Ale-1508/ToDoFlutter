@@ -30,6 +30,7 @@ class _AddToDoState extends State<AddToDo> {
 
   void handleSave() async {
     final provider = Provider.of<ToDoProvider>(context, listen: false);
+    toggleKeyboard();
     if (todoTextfieldController.text=="") return;
     
     ToDo toDo = ToDo(
@@ -40,7 +41,6 @@ class _AddToDoState extends State<AddToDo> {
     await provider.addToDo(toDo);
 
     resetState();
-    toggleKeyboard();
   }
 
   void resetState(){

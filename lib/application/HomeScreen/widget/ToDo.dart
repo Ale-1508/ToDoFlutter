@@ -27,7 +27,6 @@ class ToDo extends StatefulWidget {
 class _ToDoState extends State<ToDo> {
   @override
   Widget build(BuildContext context) {
-    print(widget.isDone);
     return Align(
       alignment: Alignment.centerLeft,
       child: Container(
