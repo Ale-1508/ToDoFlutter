@@ -59,16 +59,20 @@ class _AddToDoState extends State<AddToDo> {
       lastDate: DateTime(2101),
       builder: (BuildContext context, Widget? child) {return DateTimePickerTheme.setTheme(context, child);},
     );
+    
+    if (pickedDate==null) {
+      expiry = null;
+      return;
+    }
 
-    if (pickedDate != null && mounted){
+    if (context.mounted){
       final TimeOfDay? pickedTime = await showTimePicker(
-        // ignore: use_build_context_synchronously
         context: context,
         initialTime: TimeOfDay.now(),
         builder: (BuildContext context, Widget? child) {return DateTimePickerTheme.setTheme(context, child);},
       );
 
-      if (pickedTime != null && mounted){
+      if (pickedTime != null && context.mounted){
         setState(() {
           expiry = DateTime(
             pickedDate.year,
