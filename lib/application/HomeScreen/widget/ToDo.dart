@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/application/core/style/colors.dart';
+import 'package:todo/application/core/widget/AlertDialogs.dart';
 import 'package:todo/application/core/widget/CircleCheckbox.dart';
 import 'package:todo/data/toDoProvider.dart';
 
@@ -47,6 +48,23 @@ class _ToDoState extends State<ToDo> {
                 Map<dynamic, dynamic> toDo = await provider.getToDo(widget.index);
                 toDo["isDone"] = isDoneNewValue;
                 await provider.editToDo(widget.index, toDo);
+                if (isDoneNewValue && context.mounted) {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return ConfirmationDialog(
+                        title: "Complete To-Do",
+                        message: "Do you want to Close this To-Do?",
+                        onConfirm: () async {
+                          await provider.removeToDo(widget.index);
+                        },
+                        onCancel: () {
+                          setState(() {});
+                        },
+                      );
+                    },
+                  );
+                }
               }
             ),
             Column(
