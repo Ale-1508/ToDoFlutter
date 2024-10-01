@@ -155,7 +155,7 @@ class IconButtonSmall extends StatelessWidget {
       icon: Icon(icon),
       iconSize: 24,
       color: color,
-      onPressed: onPressed
+      onPressed: onPressed,
     );
   }
 }
